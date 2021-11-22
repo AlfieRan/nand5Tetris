@@ -14,9 +14,15 @@ CHIP FullAdder {
 
     PARTS:
     // Half adder version
-    HalfAdder(a=a, b=b, sum=d, carry=e);
-    HalfAdder(a=d, b=c, sum=sum, carry=g);
-    Or(a=e, b=g, out=carry);
+    // HalfAdder(a=a, b=b, sum=d, carry=e);
+    // HalfAdder(a=d, b=c, sum=sum, carry=g);
+    // Or(a=e, b=g, out=carry);
 
+    Xor(a=a, b=b, out=WireA);
+    And(a=a, b=b, out=WireB);
+    And(a=WireA, b=c, out=WireD);
+
+    Xor(a=WireA, b=c, out=sum);
+    Or(a=WireB, b=WireD, out=carry);
     // Put you code here:
 }
