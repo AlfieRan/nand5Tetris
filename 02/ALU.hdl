@@ -52,7 +52,7 @@ CHIP ALU {
 
     Add16(a=WireC, b=WireF, out=WireG);
     And16(a=WireC, b=WireF, out=WireH);
-    Mux16(a=WireG, b=WireH, sel=f, out=WireI);
+    Mux16(a=WireH, b=WireG, sel=f, out=WireI);
 
     Not16(in=WireI, out=WireJ);
     Mux16(a=WireI, b=WireJ, sel=no, out[0..7]=out1, out[8..15]=out2, out[15]=ng, out=out);
