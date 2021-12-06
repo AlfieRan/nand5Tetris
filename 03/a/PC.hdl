@@ -16,5 +16,10 @@ CHIP PC {
     OUT out[16];
 
     PARTS:
+    Inc16(in=regOut, out=IncIn);  //inc value
+    Mux16(a=regOut, b=IncIn, sel=inc, out=incOut);    // choose if to use inc value
+    Mux16(a=incOut, b=in, sel=load, out=loadOut);     // choose if load in or not
+    Mux16(a=loadOut, b=false, sel=reset, out=regIn); // this resets value
+    Register(in=regIn, load=true, out=regOut, out=out);
     // Put your code here:
 }
